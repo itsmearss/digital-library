@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         $users = User::all();
         $books = Book::all();
         $categories = Category::all();
@@ -30,5 +31,26 @@ class HomeController extends Controller
             'your_book_count' => $your_book_count,
             'category_count' => $category_count
         ]);
+    }
+
+    public function home(Request $request)
+    {
+        $category_id = $request->input('category_id');
+        $title = $request->input('title');
+
+        $books = Book::with('category', 'user');
+        $categories = Category::all();
+
+        if ($title) {
+            $books->where('title', 'like', '%' . $title . '%');
+        }
+
+        if ($category_id) {
+            $books->where('category_id', $category_id);
+        }
+
+        $books = $books->paginate(6);
+
+        return view('pages.landingpage.books', compact(['books', 'categories']));
     }
 }

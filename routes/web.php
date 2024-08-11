@@ -16,9 +16,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.landingpage.books');
-});
+Route::get('/', [HomeController::class, 'home']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');

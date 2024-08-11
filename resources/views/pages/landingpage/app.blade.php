@@ -1,59 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
-        name="viewport">
-    <title>@yield('title') | Perpustakaan Digital </title>
+    <title>@yield('title') | Perpustakaan Digital</title>
 
-    <!-- General CSS Files -->
-    <link rel="stylesheet"
-        href="{{ asset('library/bootstrap/dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    @stack('style')
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('dist/css/pricing.css') }}" rel="stylesheet">
+  </head>
 
-    <!-- Template CSS -->
-    <link rel="stylesheet"
-        href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('css/components.css') }}">
-</head>
-</head>
+  <body>
 
-<body>
-    <div id="app">
-        <div class="main-wrapper">
-            <!-- Header -->
-            @include('pages.landingpage.navbar')
+    {{-- Navbar --}}
+    @include('pages.landingpage.navbar')
 
-            <!-- Content -->
-            @yield('main')
+    @yield('main')
 
-            <!-- Footer -->
-            {{-- @include('components.footer') --}}
-        </div>
-    </div>
 
-    <!-- General JS Scripts -->
-    <script src="{{ asset('library/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('library/popper.js/dist/umd/popper.js') }}"></script>
-    <script src="{{ asset('library/tooltip.js/dist/umd/tooltip.js') }}"></script>
-    <script src="{{ asset('library/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('library/jquery.nicescroll/dist/jquery.nicescroll.min.js') }}"></script>
-    <script src="{{ asset('library/moment/min/moment.min.js') }}"></script>
-    <script src="{{ asset('js/stisla.js') }}"></script>
-
-    @stack('scripts')
-
-    <!-- Template JS File -->
-    <script src="{{ asset('js/scripts.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
-</body>
-
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="{{ asset('`assets/js/vendor/jquery-slim.min.js`') }}"></script>')</script>
+    <script src="{{ asset('assets/js/vendor/popper.min.js') }}"></script>
+    <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/holder.min.js') }}"></script>
+    <script>
+      Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+      });
+    </script>
+  </body>
 </html>
