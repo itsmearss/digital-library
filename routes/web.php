@@ -17,12 +17,12 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.landingpage.books');
 });
 
-Route::get('home', [HomeController::class, 'index'])->middleware(['auth'])->name('home');
-
-Route::resource('books', BookController::class)->middleware(['auth', 'verified']);
-Route::resource('categories', CategoryController::class)->middleware(['auth', 'verified']);
-
-Route::get('export', [BookController::class, 'export_excel']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::resource('books', BookController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::get('export', [BookController::class, 'export_excel']);
+});

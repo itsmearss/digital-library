@@ -79,7 +79,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>File Buku (pdf)</label>
+                                <label>File Buku (pdf) | max 2MB</label>
                                 <input type="file" class="form-control" @error('file') is-invalid @enderror name="file">
                                 @error('file')
                                     <div class="invalid-feedback">
@@ -88,7 +88,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Sampul</label>
+                                <label>Sampul | max 2MB</label>
                                 <img class="img-preview img-fluid mb-3 col-sm-5">
                                 <input type="file" class="form-control @error('cover') is-invalid @enderror" name="cover" id="photo" onchange="previewImage()">
                                 @error('cover')

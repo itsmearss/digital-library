@@ -58,11 +58,6 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('categories.show', $category->id) }}'
-                                                            class="btn btn-sm btn-success btn-icon">
-                                                            <i class="fas fa-eye"></i>
-                                                            Show
-                                                        </a>
 
                                                         <a href='{{ route('categories.edit', $category->id) }}'
                                                             class="btn btn-sm btn-info btn-icon ml-2">

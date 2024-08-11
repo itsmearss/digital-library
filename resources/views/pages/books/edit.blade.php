@@ -84,7 +84,7 @@
                             </div>
 
                             <div class="form-group block">
-                                <label>File Buku (pdf)</label>
+                                <label>File Buku (pdf) | max <i class="mdi mdi-numeric-2-box-multiple-outline:"></i></label>
                                 <br>
                                 <a href="{{asset('storage/books/' . $book->file)}}" class="btn btn-success btn-icon" target="_blank"><i class="fas fa-book"></i> Lihat file buku</a>
                                 <br>
@@ -99,7 +99,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Sampul</label>
+                                <label>Sampul | max 2MB </label>
                                 <input type="hidden" name="oldImage" value="{{ $book->cover }}" class="rounded-1">
                                 <br>
                                 @if ($book->cover)

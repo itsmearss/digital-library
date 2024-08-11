@@ -100,11 +100,6 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('books.show', $book->id) }}'
-                                                            class="btn btn-sm btn-success btn-icon">
-                                                            <i class="fas fa-eye"></i>
-                                                            Show
-                                                        </a>
 
                                                         <a href='{{ route('books.edit', $book->id) }}'
                                                             class="btn btn-sm btn-info btn-icon ml-2">

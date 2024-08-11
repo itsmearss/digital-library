@@ -76,7 +76,7 @@
                                     <h4>Total User</h4>
                                 </div>
                                 <div class="card-body">
-                                    10
+                                    {{ $user_count }}
                                 </div>
                             </div>
                         </div>

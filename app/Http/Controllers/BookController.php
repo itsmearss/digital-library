@@ -59,8 +59,8 @@ class BookController extends Controller
             'category_id' => 'required|exists:categories,id',
             'description' => 'required|string',
             'amount' => 'required|integer',
-            'file' => 'required|file|mimes:pdf',
-            'cover' => 'required|file|image'
+            'file' => 'required|file|mimes:pdf|max:20480',
+            'cover' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         // file upload
@@ -113,7 +113,7 @@ class BookController extends Controller
     {
         $categories = Category::all();
 
-        if (Auth::user()->can('update-own-book') && $book->user_id != Auth::id() || Auth::user()->hasRole('admin')) {
+        if (Auth::user()->can('update-own-book') && $book->user_id == Auth::id() || Auth::user()->hasRole('admin')) {
             return view('pages.books.edit', compact(['book', 'categories']));
         } else {
             return redirect()->route('books.index')->with('error', 'Tidak bisa mengubah buku');
@@ -132,8 +132,8 @@ class BookController extends Controller
             'category_id' => 'required|exists:categories,id',
             'description' => 'required|string',
             'amount' => 'required|integer',
-            'file' => 'nullable|file|mimes:pdf',
-            'cover' => 'nullable|file|image'
+            'file' => 'nullable|file|mimes:pdf|max:20480',
+            'cover' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         // file upload
@@ -168,7 +168,7 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         // delete
-        if (Auth::user()->can('delete-own-book') && $book->user_id != Auth::id() || Auth::user()->hasRole('admin')) {
+        if (Auth::user()->can('delete-own-book') && $book->user_id == Auth::id() || Auth::user()->hasRole('admin')) {
             if ($book->file) {
                 Storage::delete('public/books/' . $book->file);
             }
@@ -180,8 +180,10 @@ class BookController extends Controller
             $book->delete();
 
         } else {
-            return redirect()->route('books.index')->with('error', 'Tidak bisa menghapus buku');
+            return redirect()->route('pages.books.index')->with('error', 'Tidak bisa menghapus buku');
         }
+
+        return redirect()->route('books.index')->with('success', 'Berhasil menghapus buku');
     }
 
     public function export_excel()

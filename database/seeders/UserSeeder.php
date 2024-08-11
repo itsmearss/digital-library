@@ -23,8 +23,8 @@ class UserSeeder extends Seeder
         $admin->assignRole('admin');
 
         $penulis = User::create([
-            'name' => 'Penulis',
-            'email' => 'penulis@detik.com',
+            'name' => 'User',
+            'email' => 'user@detik.com',
             'password' => Hash::make('password'),
         ]);
 
