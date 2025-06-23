@@ -21,5 +21,10 @@ class DatabaseSeeder extends Seeder
         Category::create(['name' => 'Fantasi']);
         Category::create(['name' => 'Thriller']);
         Category::create(['name' => 'Pengembangan Diri']);
+
+        $this->call([
+            RolePermissionSeeder::class,
+            UserSeeder::class,
+        ]);
     }
 }
